@@ -1,22 +1,39 @@
-class Rectangle {
-  constructor(width, height) {
-    this.width = width
-    this.height = height
+class Book {
+  constructor(name, author, releaseYear) {
+    this.name = name
+    this.author = author
+    this.releaseYear = releaseYear
   }
-  calcPerimeter() {
-    const perimeter = this.width * 2 + this.height * 2
-    return perimeter
-  }
-  calcArea() {
-    const area = this.width * this.height
-    return area
+  showBookInfo() {
+    console.log(`Название книги: ${this.name}`)
+    console.log(`Автор книги: ${this.author}`)
+    console.log(`Год публикации: ${this.releaseYear}`)
   }
 }
 
-const firstRectangle = new Rectangle(5, 10)
-console.log(firstRectangle.calcArea()) // 50
-console.log(firstRectangle.calcPerimeter()) // 30
+class Ebook extends Book {
+  constructor(name, author, releaseYear, bookPrice) {
+    super(name, author, releaseYear)
+    this.bookPrice = bookPrice
+  }
+  showBookInfo() {
+    super.showBookInfo()
+    console.log(`Цена книги: ${this.bookPrice}\n`)
+  }
+}
 
-const secondRectangle = new Rectangle(1, 50)
-console.log(secondRectangle.calcArea()) // 50
-console.log(secondRectangle.calcPerimeter()) // 102
+const firstEBook = new Ebook(
+  'The Great Gatsby',
+  'F. Scott Fitzgerald',
+  1925,
+  6.99
+)
+firstEBook.showBookInfo()
+
+const secondEBook = new Ebook(
+  'Catch Me If You Can',
+  'Frank Abagnale Jr.',
+  1980,
+  9.99
+)
+secondEBook.showBookInfo()
